@@ -1,0 +1,14 @@
+
+
+rebase -i支持 author
+
+默认情况下，git rebase -i 命令只会显示hash和commit message title，需要修改git命令才可以添加author
+打开/usr/lib/git-core/git-rebase--interactive
+查找 git rev-list $merges_option --pretty=oneline --abbrev-commit \
+                                          修改为 git rev-list $merges_option --pretty=">%h (%ae) %s" \
+
+#git rev-list $merges_option --pretty=oneline --abbrev-commit \                                                                                                                                              
+                                          git rev-list $merges_option --pretty=">%h (%ae) %s" \
+
+
+
